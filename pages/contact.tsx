@@ -101,7 +101,7 @@ const Contact: React.FC<ContactProps> = () => {
                     <textarea
                       id="message"
                       name="message"
-                      rows="4"
+                      rows={4}
                       className="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400"
                       placeholder="Your message here..."
                     ></textarea>
@@ -182,7 +182,7 @@ const Contact: React.FC<ContactProps> = () => {
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
-                  allowFullScreen=""
+                  allowFullScreen={true}
                   loading="lazy"
                 ></iframe>
               </div>

@@ -6,13 +6,49 @@ import Services from '../components/Services';
 import { companyData } from '../data/company';
 import { services } from '../data/services';
 
+interface CompanyStats {
+  yearsInBusiness: number;
+  completedProjects: number;
+  happyClients: number;
+  teamMembers: number;
+}
+
+interface Achievement {
+  title: string;
+  description: string;
+}
+
+interface CompanyData {
+  description: string;
+  stats: CompanyStats;
+  achievements: Achievement[];
+  testimonials: {
+    id: number;
+    name: string;
+    company: string;
+    comment: string;
+    image: string;
+  }[];
+}
+
+interface Service {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+interface HomeProps {
+  companyData: CompanyData;
+  services: Service[];
+}
+
 export async function getStaticProps() {
   return {
     props: { companyData, services }
   };
 }
 
-export default function Home({ companyData, services }) {
+export default function Home({ companyData, services }: HomeProps) {
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
