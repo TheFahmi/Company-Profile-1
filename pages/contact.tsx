@@ -2,8 +2,12 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Layout from '../components/Layout';
 
-export default function Contact() {
-  const fadeIn = {
+interface ContactProps {
+  // Add any props that the Contact component might receive
+}
+
+const Contact: React.FC<ContactProps> = () => {
+  const fadeIn: { hidden: { opacity: number; y: number }; visible: { opacity: number; y: number } } = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
   };
@@ -188,4 +192,6 @@ export default function Contact() {
       </section>
     </Layout>
   );
-}
+};
+
+export default Contact;

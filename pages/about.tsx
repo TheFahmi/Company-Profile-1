@@ -4,12 +4,31 @@ import Image from 'next/image';
 import Layout from '../components/Layout';
 import { companyData } from '../data/company';
 
+interface CompanyData {
+  stats: {
+    yearsInBusiness: number;
+    completedProjects: number;
+    happyClients: number;
+    teamMembers: number;
+  };
+  team: {
+    name: string;
+    position: string;
+    image: string;
+    bio: string;
+  }[];
+}
+
+interface AboutProps {
+  companyData: CompanyData;
+}
+
 export async function getServerSideProps() {
   return { props: { companyData } }
 }
 
-export default function About({ companyData }) {
-  const fadeIn = {
+export default function About({ companyData }: AboutProps) {
+  const fadeIn: { hidden: { opacity: number; y: number }; visible: { opacity: number; y: number } } = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
   };
@@ -114,7 +133,7 @@ export default function About({ companyData }) {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-playfair font-bold text-center mb-12 text-gray-900 dark:text-white">
             Meet Our Team
-          </h2>
+            </h2>
           <motion.div
             ref={teamRef}
             initial="hidden"

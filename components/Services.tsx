@@ -2,12 +2,22 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import ServiceIcon from './ServiceIcon';
 
-export default function Services({ services }) {
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
+interface Service {
+  icon: string;
+  title: string;
+  description: string;
+}
 
+interface ServicesProps {
+  services: Service[];
+}
+
+const fadeIn: { hidden: { opacity: number; y: number }; visible: { opacity: number; y: number } } = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
+
+export default function Services({ services }: ServicesProps) {
   const [servicesRef, servicesInView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (

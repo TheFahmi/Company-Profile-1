@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import { Inter, Playfair_Display } from 'next/font/google';
 import Loading from '../components/Loading';
 import '../styles/globals.css';
+import { AppProps } from 'next/app';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -17,9 +18,9 @@ const playfair = Playfair_Display({
   display: 'swap',
 });
 
-function MyApp({ Component, pageProps }) {
-  const [isFirstVisit, setIsFirstVisit] = useState(true);
-  const [isLoading, setIsLoading] = useState(true);
+function MyApp({ Component, pageProps }: AppProps) {
+  const [isFirstVisit, setIsFirstVisit] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     // Check if this is the first visit

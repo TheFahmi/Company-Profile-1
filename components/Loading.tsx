@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-const Loading = () => {
+const Loading: React.FC = () => {
   return (
     <motion.div
       initial={{ opacity: 1 }}
